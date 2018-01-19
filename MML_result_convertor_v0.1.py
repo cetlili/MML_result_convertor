@@ -45,12 +45,12 @@ except IOError:
     file_name=input("Error: File does not appear to exist,please check the file name and try again")
     sys.exit()
 
-# with open(file_name) as file:
+# Loop to go through line by line
 for i, line in enumerate(file):
 
     if line in ['\n', '\r\n'] and last_line not in ['\n', '\r\n']:
 
-        # pack up all data
+        # pack up all data when the line change from true to false and reset temp vars
 
         if mo_temp:
             mo.append(mo_temp)
