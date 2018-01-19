@@ -29,7 +29,7 @@ p4 = re.compile('RETCODE = [0-9]+ (.*)')
 p5 = re.compile('LOCALCELLID=(.*?),.*')
 # p6 = re.compile(r'((?<=:)(LOCALCELLID=[0-9]?.*|.*))')
 p6 = re.compile(r'.*LOCALCELLID=[0-9]+,(.*)')
-p7 = re.compile(':(.*);')
+p_nocell = re.compile(':(.*);')
 # file_name = 'MML_Task_Result_small cell_20170719_094746.txt'
 
 
@@ -89,7 +89,7 @@ for i, line in enumerate(file):
         if k5 in line:
             pp = p6
         else:
-            pp = p7
+            pp = p_nocell
         para_temp = pp.findall(line)
         # print(i, mo_temp, para_temp)
 
