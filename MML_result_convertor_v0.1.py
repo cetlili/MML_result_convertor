@@ -15,12 +15,13 @@ report = []
 recode = []
 locell = []
 para = []
+# set key words
 k1 = 'MML Command-----'
 k2 = 'NE :'
 k3 = 'Report :'
 k4 = 'RETCODE ='
 k5 = 'LOCALCELLID'
-
+# define re to capture specific strings
 p1 = re.compile(r'MML Command-----[A-Z]{3} ((?<!:)\w+)')
 p2 = re.compile('NE :(.*)')
 p3 = re.compile('Report :(.*)')
