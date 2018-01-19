@@ -77,12 +77,12 @@ for i, line in enumerate(file):
         recode_temp = ''
         locell_temp = ''
         para_temp = ''
-        # print(i,mo,ne)
 
+        # find NE names
     if k2 in line:
         ne_temp = p2.findall(line)[0]
-        # print(i,ne_temp)
 
+        # find MO names
     if k1 in line:
         mo_temp = p1.findall(line)[0]
         locell_temp = p5.findall(line)
