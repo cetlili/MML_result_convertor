@@ -1,6 +1,6 @@
 import re
 import sys
-
+import os.path
 
 last_line = '\n'
 mo_temp = ''
@@ -31,19 +31,23 @@ p5 = re.compile('LOCALCELLID=(.*?),.*')
 p6 = re.compile(r'.*LOCALCELLID=[0-9]+,(.*)')
 p7 = re.compile(':(.*);')
 # file_name = 'MML_Task_Result_small cell_20170719_094746.txt'
+e = True
+while e == True:
+    file_name = input('Please input file name (input absolute path if MML result file is not in same folder of exe file,type q to quit:')
+    if file_name.lower() =='q':
+        sys.exit()
 
+    elif os.path.isfile(file_name):
+        file = open(file_name,'r')
+        e = False
+        csvfilename = os.path.basename(file_name).split('.')[0] + ".csv"
 
-file_name = input('Please input file name (input absolute path if MML result file is not in same folder of exe file,type q to quit:')
-csvfilename = file_name.split(sep=".")[0] + ".csv"
-if file_name.lower() =='q':
-    sys.exit()
-
-try:
-    file = open(file_name, "r")
-    t = False
-except IOError:
-    file_name=input("Error: File does not appear to exist,please check the file name and try again")
-    sys.exit()
+# try:
+#     file = open(file_name, "r")
+#     t = False
+# except IOError:
+#     file_name=input("Error: File does not appear to exist,please check the file name and try again")
+#     sys.exit()
 
 # Loop to go through line by line
 for i, line in enumerate(file):
