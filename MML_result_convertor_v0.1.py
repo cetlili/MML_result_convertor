@@ -1,3 +1,6 @@
+# V0.1
+# the scripts is to help convert Huawei MML run result file to a more freiendly csv table.
+
 import re
 import sys
 import os.path
@@ -40,8 +43,8 @@ while e == True:
     elif os.path.isfile(file_name):
         file = open(file_name,'r')
         e = False
-        csvfilename = os.path.basename(file_name).split('.')[0] + ".csv"
-
+        csvfilename = file_name.split(sep=".")[0] + ".csv"
+    else:print('Error: File does not appear to exist,please check the file name and try again')
 # try:
 #     file = open(file_name, "r")
 #     t = False
@@ -118,3 +121,5 @@ import csv
 with open(csvfilename, 'w', newline='') as csvfile:
     wr = csv.writer(csvfile, dialect='excel')
     wr.writerows(z)
+
+print('\nOK,done. Please check exe file folder for converted file.')
