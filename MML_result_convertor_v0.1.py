@@ -122,4 +122,5 @@ with open(csvfilename, 'w', newline='') as csvfile:
     wr = csv.writer(csvfile, dialect='excel')
     wr.writerows(z)
 
-print('\nOK,done. Please check file in same folder with MML result for converted file.')
+input('\nOK,done. Please check the file in same folder with MML result for converted file and press "enter" to exit')
+sys.exit()
