@@ -122,4 +122,4 @@ with open(csvfilename, 'w', newline='') as csvfile:
     wr = csv.writer(csvfile, dialect='excel')
     wr.writerows(z)
 
-print('\nOK,done. Please check exe file folder for converted file.')
+print('\nOK,done. Please check file in same folder with MML result for converted file.')
