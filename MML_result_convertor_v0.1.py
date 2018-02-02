@@ -75,6 +75,7 @@ for i, line in enumerate(file):
                 para.append(para_temp[0])
         if ne_temp:
             ne.append(ne_temp)
+
         if report_temp:
             report.append(report_temp)
 
@@ -82,6 +83,7 @@ for i, line in enumerate(file):
                 recode.append('No recode')
             else:
                 recode.append(recode_temp)
+
         mo_temp = ''
         ne_temp = ''
         report_temp = ''
@@ -114,6 +116,10 @@ for i, line in enumerate(file):
         # print(recode_temp)
     last_line = line
 file.close()
+
+for i,v in enumerate(mml):
+    mml[i] = mml[i] +'{'+ne[i]+'}'
+
 ne.insert(0, "NE Name")
 mo.insert(0, 'MO Name')
 report.insert(0, 'Report')
