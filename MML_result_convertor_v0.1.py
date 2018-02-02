@@ -12,12 +12,14 @@ report_temp = ''
 recode_temp = ''
 locell_temp = ''
 para_temp = ''
+mml_temp=''
 mo = []
 ne = []
 report = []
 recode = []
 locell = []
 para = []
+mml=[]
 # set key words
 k1 = 'MML Command-----'
 k2 = 'NE :'
@@ -33,6 +35,7 @@ p5 = re.compile('LOCALCELLID=(.*?),.*')
 # p6 = re.compile(r'((?<=:)(LOCALCELLID=[0-9]?.*|.*))')
 p6 = re.compile(r'.*LOCALCELLID=[0-9]+,(.*)')
 p7 = re.compile(':(.*);')
+p8=  re.compile('MML Command-----(.*)')
 # file_name = 'MML_Task_Result_small cell_20170719_094746.txt'
 e = True
 while e == True:
@@ -61,6 +64,7 @@ for i, line in enumerate(file):
 
         if mo_temp:
             mo.append(mo_temp)
+            mml.append(mml_temp)
             if not locell_temp:
                 locell.append(' ')
             else:
@@ -84,15 +88,17 @@ for i, line in enumerate(file):
         recode_temp = ''
         locell_temp = ''
         para_temp = ''
-
+        mml_temp=''
         # find NE names
     if k2 in line:
-        ne_temp = p2.findall(line)[0]
+        ne_temp = p2.findall(line)[0].strip()
 
         # find MO names
     if k1 in line:
         mo_temp = p1.findall(line)[0]
         locell_temp = p5.findall(line)
+        mml_temp = p8.findall(line)[0]
+        print(mml_temp)
         if k5 in line:
             pp = p6
         else:
@@ -114,7 +120,8 @@ report.insert(0, 'Report')
 recode.insert(0, 'Return code')
 locell.insert(0, 'Locell ID')
 para.insert(0, 'Parameters')
-z = zip(ne, mo, locell, para, report, recode)
+mml.insert(0,'MML')
+z = zip(ne, mo, locell, para, report, recode,mml)
 
 import csv
 
