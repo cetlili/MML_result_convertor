@@ -98,7 +98,7 @@ for i, line in enumerate(file):
         mo_temp = p1.findall(line)[0]
         locell_temp = p5.findall(line)
         mml_temp = p8.findall(line)[0]
-        print(mml_temp)
+        # print(mml_temp)
         if k5 in line:
             pp = p6
         else:
