@@ -3,8 +3,7 @@
 
 import re
 import sys
-import os.path
-
+import ctypes
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename
 
@@ -51,7 +50,7 @@ e = True
 #         e = False
 #         csvfilename = file_name.split(sep=".")[0] + ".csv"
 #     else:print('Error: File does not appear to exist,please check the file name and try again')
-
+ctypes.windll.user32.MessageBoxW(0, "Please select the MML result file", "MML_Result_Convertor", 0)
 Tk().withdraw()
 while e== True:
     file_name =askopenfilename()
@@ -148,8 +147,7 @@ import csv
 with open(csvfilename, 'w', newline='') as csvfile:
     wr = csv.writer(csvfile, dialect='excel')
     wr.writerows(z)
-
-import ctypes  # An included library with Python install.
-ctypes.windll.user32.MessageBoxW(0, "OK,done. Please check the file in same folder with MML result and press 'OK' to exit", "MML_Result_Convertor", 1)
+  # An included library with Python install.
+ctypes.windll.user32.MessageBoxW(0, "OK,done!\nPlease check the file in the folder with MML result file\nPlease press 'OK' to exit", "MML_Result_Convertor", 0)
 # input('\nOK,done. Please check the file in same folder with MML result for converted file and press "enter" to exit')
 # sys.exit()
