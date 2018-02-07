@@ -4,7 +4,8 @@
 import re
 import sys
 import os.path
-
+from tkinter import Tk
+from tkinter.filedialog import askopenfilename
 last_line = '\n'
 mo_temp = ''
 ne_temp = ''
@@ -38,16 +39,27 @@ p7 = re.compile(':(.*);')
 p8=  re.compile('MML Command-----(.*)')
 # file_name = 'MML_Task_Result_small cell_20170719_094746.txt'
 e = True
-while e == True:
-    file_name = input('Please input file name (input absolute path if MML result file is not in same folder of exe file,type q to quit:')
-    if file_name.lower() =='q':
-        sys.exit()
+# while e == True:
+#     file_name = input('Please input file name (input absolute path if MML result file is not in same folder of exe file,type q to quit:')
+#     if file_name.lower() =='q':
+#         sys.exit()
+#
+#     elif os.path.isfile(file_name):
+#         file = open(file_name,'r')
+#         e = False
+#         csvfilename = file_name.split(sep=".")[0] + ".csv"
+#     else:print('Error: File does not appear to exist,please check the file name and try again')
 
-    elif os.path.isfile(file_name):
+Tk().withdraw()
+while e== True:
+    file_name =askopenfilename()
+    if not file_name:
+        sys.exit()
+    else:
         file = open(file_name,'r')
         e = False
         csvfilename = file_name.split(sep=".")[0] + ".csv"
-    else:print('Error: File does not appear to exist,please check the file name and try again')
+
 # try:
 #     file = open(file_name, "r")
 #     t = False
