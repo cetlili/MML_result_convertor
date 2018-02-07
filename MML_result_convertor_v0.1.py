@@ -4,8 +4,10 @@
 import re
 import sys
 import os.path
+
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename
+
 last_line = '\n'
 mo_temp = ''
 ne_temp = ''
@@ -147,5 +149,7 @@ with open(csvfilename, 'w', newline='') as csvfile:
     wr = csv.writer(csvfile, dialect='excel')
     wr.writerows(z)
 
-input('\nOK,done. Please check the file in same folder with MML result for converted file and press "enter" to exit')
-sys.exit()
+import ctypes  # An included library with Python install.
+ctypes.windll.user32.MessageBoxW(0, "OK,done. Please check the file in same folder with MML result and press 'OK' to exit", "MML_Result_Convertor", 1)
+# input('\nOK,done. Please check the file in same folder with MML result for converted file and press "enter" to exit')
+# sys.exit()
